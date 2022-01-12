@@ -18,8 +18,8 @@
 
     On affiche donc notre tissu, en jouant avec les paramètres : 
 
-![tissu](Img_results/tissu.png)  
-![tissu avec point d'accroche](Img_results/tissu_force_accroche.png) 
+![tissu](Img_results/tissu.PNG)  
+![tissu avec point d'accroche](Img_results/tissu_force_accroche.PNG) 
 
     Le programme semble avoir un problème sous Windows (je n'ai pas pu le lancer sous Linux), car parfois il crash quand je change les paramètre dans le fichier scn. De plus parfois il fonctionne avec les paramètres par défaut et parfois non. Je n'ai pas trouvé d'où celà pourrais venir.
 
@@ -27,7 +27,7 @@
 
     Pour cette partie on ajoute des ressort le long de la diagonale des cellules de la grille. On complètes donc la fonction makeGrid.
 
-![tissu rigide](Img_results/tissu_rigidité.png)
+![tissu rigide](Img_results/tissu_rigidité.PNG)
 
 ## 6. Implémentation du point du milieu
 
