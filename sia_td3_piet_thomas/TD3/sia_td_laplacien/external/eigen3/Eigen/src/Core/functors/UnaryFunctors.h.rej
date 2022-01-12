@@ -1,0 +1,39 @@
+***************
+*** 971,989 ****
+    *  logistic is interpolated because it was easier to make the fit converge.
+    *
+    */
+  
+  template <>
+  struct scalar_logistic_op<float> {
+    EIGEN_EMPTY_STRUCT_CTOR(scalar_logistic_op)
+    EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE float operator()(const float& x) const {
+-     if (x < -18.0f) return 0.0f;
+-     else if (x > 18.0f) return 1.0f;
+-     else return 1.0f / (1.0f + numext::exp(-x));
+    }
+  
+    template <typename Packet> EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE
+    Packet packetOp(const Packet& _x) const {
+      // Clamp the inputs to the range [-18, 18] since anything outside
+      // this range is 0.0f or 1.0f in single-precision.
+      const Packet x = pmax(pmin(_x, pset1<Packet>(18.0)), pset1<Packet>(-18.0));
+  
+--- 970,986 ----
+    *  logistic is interpolated because it was easier to make the fit converge.
+    *
+    */
+  
+  template <>
+  struct scalar_logistic_op<float> {
+    EIGEN_EMPTY_STRUCT_CTOR(scalar_logistic_op)
+    EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE float operator()(const float& x) const {
++     return packetOp(x);
+    }
+  
+    template <typename Packet> EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE
+    Packet packetOp(const Packet& _x) const {
+      // Clamp the inputs to the range [-18, 18] since anything outside
+      // this range is 0.0f or 1.0f in single-precision.
+      const Packet x = pmax(pmin(_x, pset1<Packet>(18.0)), pset1<Packet>(-18.0));
+  

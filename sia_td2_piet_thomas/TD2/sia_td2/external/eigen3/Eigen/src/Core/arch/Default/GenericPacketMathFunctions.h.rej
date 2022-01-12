@@ -1,0 +1,78 @@
+***************
+*** 228,243 ****
+    y = pmadd(y, r, cst_cephes_exp_p5);
+    y = pmadd(y, r2, r);
+    y = padd(y, cst_1);
+  
+    // Return 2^m * exp(r).
+    return pmax(pldexp(y,m), _x);
+  }
+  
+  template <typename Packet>
+  EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS
+  EIGEN_UNUSED
+  Packet pexp_double(const Packet _x)
+  {
+    Packet x = _x;
+  
+    const Packet cst_1 = pset1<Packet>(1.0);
+--- 228,247 ----
+    y = pmadd(y, r, cst_cephes_exp_p5);
+    y = pmadd(y, r2, r);
+    y = padd(y, cst_1);
+  
+    // Return 2^m * exp(r).
+    return pmax(pldexp(y,m), _x);
+  }
+  
++ // make it the default path for scalar float
++ template<>
++ float pexp(const float& a) { return pexp_float(a); }
++ 
+  template <typename Packet>
+  EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS
+  EIGEN_UNUSED
+  Packet pexp_double(const Packet _x)
+  {
+    Packet x = _x;
+  
+    const Packet cst_1 = pset1<Packet>(1.0);
+***************
+*** 296,311 ****
+    x = pdiv(px, psub(qx, px));
+    x = pmadd(cst_2, x, cst_1);
+  
+    // Construct the result 2^n * exp(g) = e * x. The max is used to catch
+    // non-finite values in the input.
+    return pmax(pldexp(x,fx), _x);
+  }
+  
+  // The following code is inspired by the following stack-overflow answer:
+  //   https://stackoverflow.com/questions/30463616/payne-hanek-algorithm-implementation-in-c/30465751#30465751
+  // It has been largely optimized:
+  //  - By-pass calls to frexp.
+  //  - Aligned loads of required 96 bits of 2/pi. This is accomplished by
+  //    (1) balancing the mantissa and exponent to the required bits of 2/pi are
+  //    aligned on 8-bits, and (2) replicating the storage of the bits of 2/pi.
+  //  - Avoid a branch in rounding and extraction of the remaining fractional part.
+--- 300,319 ----
+    x = pdiv(px, psub(qx, px));
+    x = pmadd(cst_2, x, cst_1);
+  
+    // Construct the result 2^n * exp(g) = e * x. The max is used to catch
+    // non-finite values in the input.
+    return pmax(pldexp(x,fx), _x);
+  }
+  
++ // make it the default path for scalar double
++ template<>
++ double pexp(const double& a) { return pexp_double(a); }
++ 
+  // The following code is inspired by the following stack-overflow answer:
+  //   https://stackoverflow.com/questions/30463616/payne-hanek-algorithm-implementation-in-c/30465751#30465751
+  // It has been largely optimized:
+  //  - By-pass calls to frexp.
+  //  - Aligned loads of required 96 bits of 2/pi. This is accomplished by
+  //    (1) balancing the mantissa and exponent to the required bits of 2/pi are
+  //    aligned on 8-bits, and (2) replicating the storage of the bits of 2/pi.
+  //  - Avoid a branch in rounding and extraction of the remaining fractional part.
