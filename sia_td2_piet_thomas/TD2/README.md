@@ -6,8 +6,8 @@
     J'ai ensuite appelé la fonction dans le Viewer::init(), et finalement j'ai dessinez le maillage dans le Viewer::display() en reprenant en partie le code de la partie du shader _blinnPrg.
     J'obtiens donc bien les résulats attendus.
     
-![Shadow volumes visualisés en rendu fil de fer](Img_results/part1_end.png)
-![Shadow volumes visualisés en rendu fil de fer](Img_results/part1_end2.png)
+![Shadow volumes visualisés en rendu fil de fer](Img_results/part1_end.PNG)
+![Shadow volumes visualisés en rendu fil de fer](Img_results/part1_end2.PNG)
 
 
 ## 2. Comptage des entrées et sorties
