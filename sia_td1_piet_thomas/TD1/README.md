@@ -8,14 +8,14 @@
 
     Le problème était donc au niveau de mes shaders. Après quelques modifications j'obtiens enfin des résultats correct, mais un nouveau problème se pose : je n'arrive pas à save les deux couches colors et normals en même temps.
 
-<img src="Img_results/bug_colors_normals.png" alt="Bug FBO" style="width:500px;"/>
+<img src="Img_results/bug_colors_normals.PNG" alt="Bug FBO" style="width:500px;"/>
 
     L'erreur était donc au nivau du FBO et de la fonction glFramebufferTexture2D(), et plus précisement du paramètre attachment, où j'utilisais pour les deux textures GL_COLOR_ATTACHMENT0 au lieu d'utilise pour l'une des deux GL_COLOR_ATTACHMENT1.
     Au final j'obtiens des textures colors et normals correctes.
 
 Colors texture             |  Normals texture
 :-------------------------:|:-------------------------:
-![Bug FBO](Img_results/colors.png)   |  ![Bug FBO](Img_results/normals.PNG)
+![Bug FBO](Img_results/colors.png)   |  ![Bug FBO](Img_results/normals.png)
 
 
 ## 2. Calcul de l'éclairage
