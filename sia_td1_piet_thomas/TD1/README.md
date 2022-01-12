@@ -22,7 +22,7 @@ Colors texture             |  Normals texture
 
     Pour cette seconde partie, après avoir suivi le sujet pour les deux premier point, je me suis retouvé avec un problème. Le code compile sans message d'erreur, le programme save bien deux png des texture colors et normals, mais il se termine instantanémnt sans rien afficher dans la fenêtre.
 
-<img src="Img_results/colors_normals_part2.png" alt="Crash Part2" style="width:500px;"/>
+<img src="Img_results/colors_normals_part2.PNG" alt="Crash Part2" style="width:500px;"/>
 
     Après quelques minutes, le problème était au niveau de la déclaration de inv_projection_matrix, que je déclarais en Matrix3f au lieu de Matrix4f. Maintenant le programme ne crash plus.
 
