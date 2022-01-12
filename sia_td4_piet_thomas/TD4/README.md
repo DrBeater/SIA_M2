@@ -9,7 +9,7 @@
 
     On affiche ensuite l'erreur d'estimation, la variance analytique et la variance numérique:
     
-![Monte-Carlo](Img_results/Monte_carlo.png)
+![Monte-Carlo](Img_results/Monte_carlo.PNG)
 
 
 ## 2. Anti-Aliasing
