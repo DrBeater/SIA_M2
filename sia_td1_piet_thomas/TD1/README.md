@@ -15,7 +15,7 @@
 
 Colors texture             |  Normals texture
 :-------------------------:|:-------------------------:
-![Bug FBO](Img_results/colors.png)   |  ![Bug FBO](Img_results/normals.png)
+![Bug FBO](Img_results/colors.png)   |  ![Bug FBO](Img_results/normals.PNG)
 
 
 ## 2. Calcul de l'éclairage
