@@ -19,6 +19,6 @@
     Pour cette partie, on résoud l'équation 4, en utilisant la factorisation de Cholesky.
     Après cetet partie, il devrait nous être possible de tester la reconstruction, pour ça on sélectionne un zone :
 
-![bunny](Img_results/bunny_selection.png)
+![bunny](Img_results/bunny_selection.PNG)
 
     Puis on appuie sur 1 pour lancer l'application. Hélas, ici le programme tourne, semble bugger un peu, puis à la fin aucun changement.
